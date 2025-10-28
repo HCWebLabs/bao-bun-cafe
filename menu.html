@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lings Cafe Chinese Restaurant - Authentic Chinese cuisine with dumplings, noodles, and rice bowls">
+    <title>Lings Cafe - Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #c94a3a;
+            --primary-dark: #a13829;
+            --secondary: #f4a261;
+            --accent: #e76f51;
+            --bg-light: #fff9f5;
+            --bg-white: #ffffff;
+            --text-dark: #2d2d2d;
+            --text-light: #666666;
+            --border: #e0e0e0;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow-hover: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #ffe8d6 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Skip to main content for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* Header */
+        header {
+            background: 
+                linear-gradient(rgba(255, 249, 245, 0.85), rgba(255, 249, 245, 0.90)),
+                url('https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=1200&h=400&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 24px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow);
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        /* Alert Banner */
+        .alert {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
+
+        .alert h2 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .alert p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding: 8px 0 16px 0;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .filter-tabs::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .filter-tabs::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .tab-btn {
+            background: var(--bg-white);
+            border: 2px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tab-btn:hover,
+        .tab-btn:focus {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px var(--shadow);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            position: relative;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .section-banner {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .section-banner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .section-header h2 {
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .section-note {
+            font-size: 13px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary);
+        }
+
+        /* Menu Items */
+        .menu-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .menu-item {
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+        }
+
+        .menu-item:hover,
+        .menu-item:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 6px 20px var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            gap: 12px;
+        }
+
+        .item-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            flex: 1;
+        }
+
+        .item-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .item-description {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+        }
+
+        .item-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .contact-info {
+            background: var(--bg-white);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 640px) {
+            .container {
+                padding: 24px;
+            }
+
+            header {
+                padding: 32px 24px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 32px;
+            }
+
+            .menu-section {
+                padding: 32px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .filter-tabs,
+            .alert {
+                display: none;
+            }
+
+            .menu-section {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid var(--border);
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="container">
+        <header role="banner">
+            <div class="header-bg"></div>
+            <div class="logo">
+                <div class="logo-icon" aria-hidden="true">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h1>Lings Cafe</h1>
+            </div>
+            <p class="subtitle">Authentic Chinese Restaurant</p>
+            
+            <div class="alert" role="alert">
+                <h2><i class="fas fa-exclamation-circle"></i> Under Construction</h2>
+                <p>This site is still under construction and will change. Please check back often for updates. Prices are not set and may change.</p>
+                <p><strong>Note:</strong> Only Lunch items are being served. We expect changes to occur around November 1st, 2025.</p>
+                <p><strong>Inquiries on Menu Items:</strong> <a href="tel:8654265192" style="color: white; text-decoration: underline;">(865)426-5192</a></p>
+            </div>
+        </header>
+
+        <nav aria-label="Menu categories">
+            <div class="filter-tabs" role="tablist">
+                <button class="tab-btn active" role="tab" aria-selected="true" data-category="all">
+                    <i class="fas fa-th"></i> All Items
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-category="featured">
+                    <i class="fas fa-star"></i> Featured
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-category="appetizers">
+                    <i class="fas fa-fire"></i> Appetizers
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-category="rice">
+                    <i class="fas fa-bowl-rice"></i> Rice Bowls
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" data-category="noodles">
+                    <i class="fas fa-wheat-awn"></i> Noodles
+                </button>
+            </div>
+        </nav>
+
+        <main id="main-content">
+            <!-- Featured Items -->
+            <section class="menu-section" data-category="featured">
+                <div class="section-header">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=1200&h=300&fit=crop" alt="" class="section-banner" aria-hidden="true">
+                    <div class="section-banner-overlay">
+                        <div class="section-icon" aria-hidden="true">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h2>Currently Introducing</h2>
+                    </div>
+                </div>
+                <div class="menu-grid">
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=400&h=300&fit=crop" alt="Stuffed pancake with curry sauce" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Lings Stuffed Pancake with Curry Dipping Sauce</h3>
+                            <span class="item-price">$9.99</span>
+                        </div>
+                        <p class="item-description">A Green Onion, thin pancake like wrap with Egg and Cheese. Served with a hot cup of Curry for Dipping.</p>
+                        <span class="item-badge">New</span>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?w=400&h=300&fit=crop" alt="Shrimp dumplings" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">6 Shrimp Dumplings</h3>
+                            <span class="item-price">$9.99</span>
+                        </div>
+                        <p class="item-description">Delicate Shrimp dumplings with translucent-like skin.</p>
+                        <span class="item-badge">New</span>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&h=300&fit=crop" alt="Chicken egg rolls" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">3 or 6 Chicken Egg Rolls</h3>
+                            <span class="item-price">$5.99 / $9.99(6)</span>
+                        </div>
+                        <p class="item-description">These are thin Chicken egg rolls.</p>
+                        <span class="item-badge">Popular</span>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Appetizers -->
+            <section class="menu-section" data-category="appetizers">
+                <div class="section-header">
+                    <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=1200&h=300&fit=crop" alt="" class="section-banner" aria-hidden="true">
+                    <div class="section-banner-overlay">
+                        <div class="section-icon" aria-hidden="true">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h2>Appetizers</h2>
+                    </div>
+                </div>
+                <div class="menu-grid">
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1517491312522-496d7b6f1167?w=400&h=300&fit=crop" alt="Custard bao buns" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">3 Custard Bao (sweet)</h3>
+                            <span class="item-price">$5.99</span>
+                        </div>
+                        <p class="item-description">Fluffy and steamed Chinese buns filled with a creamy, sweet, and fragrant egg custard.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=300&fit=crop" alt="Pan-fried dumplings" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">6 Dumplings (Pork or Beef or Veggie)</h3>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Minced Pork or Beef or Veggies wrapped in a thin dough and pan-fried to perfection.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400&h=300&fit=crop" alt="Wonton soup" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Wonton Soup</h3>
+                            <span class="item-price">$6.99</span>
+                        </div>
+                        <p class="item-description">A classic comfort dish featuring delicate dumplings knowns as wontons in a chicken style broth.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1583425423320-2386622cd2e4?w=400&h=300&fit=crop" alt="Crab rangoon" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">10 Crab Rangoon</h3>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Fried to a crispy golden color, filled with a crab and cream cheese mixture.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Rice Bowls -->
+            <section class="menu-section" data-category="rice">
+                <div class="section-header">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=1200&h=300&fit=crop" alt="" class="section-banner" aria-hidden="true">
+                    <div class="section-banner-overlay">
+                        <div class="section-icon" aria-hidden="true">
+                            <i class="fas fa-bowl-rice"></i>
+                        </div>
+                        <h2>Rice Bowls</h2>
+                    </div>
+                </div>
+                <p class="section-note">Schezwan Steamed Rice for T-Fried Rice for additional 1.99</p>
+                <div class="menu-grid">
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=300&fit=crop" alt="Fried rice" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Fried Rice (Chicken or Beef or Egg)</h3>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Delicious Fried rice with your favorite protein.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=400&h=300&fit=crop" alt="Sweet and sour chicken" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Sweet and Sour Chicken Rice Bowl</h3>
+                            <span class="item-price">$9.99</span>
+                        </div>
+                        <p class="item-description">Sweet and Sour Sauce smothering lightly battered chicken pieces mixed with Green/Red/Yellow Bell Pepper and onion.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&h=300&fit=crop" alt="Curry chicken" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Curry Chicken Rice Bowl</h3>
+                            <span class="item-price">$10.99</span>
+                        </div>
+                        <p class="item-description">A curry chicken rice bowls features flavorful, seasoned chicken and rich curry sauce served over a bed of rice. Accompanied with green onion, potatoes, carrots, and green pepper.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=400&h=300&fit=crop" alt="Teriyaki chicken" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Teriyaki Chicken Rice Bowl</h3>
+                            <span class="item-price">$10.99</span>
+                        </div>
+                        <p class="item-description">Sweet teriyaki sauce, Chicken with steamed or fried rice.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&h=300&fit=crop" alt="Moo goo gai pan" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Moo Goo Gai Pan Rice Bowl</h3>
+                            <span class="item-price">$12.99</span>
+                        </div>
+                        <p class="item-description">Sautéed and perfectly cook chicken pieces in a creamy sauce. Mixed with Snow Pea Pods, Water Chestnuts, Bamboo Shoots, Carrots and Mushrooms.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1604908815453-e64733d9ca9e?w=400&h=300&fit=crop" alt="Tomato and egg rice bowl" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Tomato and Egg Rice Bowl</h3>
+                            <span class="item-price">$9.99</span>
+                        </div>
+                        <p class="item-description">Our tomato and egg rice bowl is a popular and comforting Chinese homestyle dish known for its simple preparation and satisfying flavors. This dish consists of a stir fry made with tangy tomatoes and scrambled eggs.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1633964913295-ceb43826d1ff?w=400&h=300&fit=crop" alt="Mapo tofu" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Mapo Tofu Rice Bowl</h3>
+                            <span class="item-price">$9.99</span>
+                        </div>
+                        <p class="item-description">Our Mapo Tofu rice bowl is Sichzuanese dish consisting of soft, silky cubes of tofu and minced pork meat, cooked in a thick, spicy, and aromatic sauce, served over a bed of rice.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Noodles -->
+            <section class="menu-section" data-category="noodles">
+                <div class="section-header">
+                    <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1200&h=300&fit=crop" alt="" class="section-banner" aria-hidden="true">
+                    <div class="section-banner-overlay">
+                        <div class="section-icon" aria-hidden="true">
+                            <i class="fas fa-wheat-awn"></i>
+                        </div>
+                        <h2>Noodles</h2>
+                    </div>
+                </div>
+                <div class="menu-grid">
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop" alt="Chicken noodles" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Chicken Noodle</h3>
+                            <span class="item-price">$7.99</span>
+                        </div>
+                        <p class="item-description">Choose between Lings Spicy Garlic Sauce, Sesame Sauce, Sesame Chili Sauce, or Teriyaki Sauce. These are traditional egg noodles. Pick your sauces wisely. It is a may choose your own adventure.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1604908815453-e64733d9ca9e?w=400&h=300&fit=crop" alt="Tomato and egg noodles" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Tomato and Egg Noodle</h3>
+                            <span class="item-price">$9.99</span>
+                        </div>
+                        <p class="item-description">A classic and comforting homestyle favorite, our Tomato and Egg noodles feature a savory sweet sauce of tender, stewed tomatoes combined with a light and fluffy scrambled egg.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=400&h=300&fit=crop" alt="Dandan noodles" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Dandan Mian</h3>
+                            <span class="item-price">$10.99</span>
+                        </div>
+                        <p class="item-description">Featuring wheat noodles and a rich, savory, and spicy sauce with a signature numbing sensation known as mala, from Sichuan peppercorns.</p>
+                    </article>
+
+                    <article class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1612927601601-6638404737ce?w=400&h=300&fit=crop" alt="Beijing noodles" class="item-image" loading="lazy">
+                        <div class="item-header">
+                            <h3 class="item-name">Beijing Noodles (Beijing Zajiang Mian)</h3>
+                            <span class="item-price">$11.99</span>
+                        </div>
+                        <p class="item-description">This is a classic Beijing Noodle dish featuring chewy wheat noodles topped with a rich, savory, and slightly sweet fried sauce made from ground pork and bean pastes, complemented by a variety of fresh, crunchy vegetables.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer role="contentinfo">
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:8654265192">(865) 426-5192</a></p>
+                <p><i class="fas fa-exclamation-triangle"></i> Allergy Notice: Please be advised that we use food products with common allergies, including milk, eggs, sesame, wheat, soybeans, peanuts, tree nuts, fish, wheat with gluten or wheat meats are clearly published that any contact of these offending allergen may occur.</p>
+            </div>
+            <p>&copy; 2025 Lings Cafe - All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.tab-btn');
+        const menuSections = document.querySelectorAll('.menu-section');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+                
+                // Update active button
+                filterButtons.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+
+                // Filter sections
+                menuSections.forEach(section => {
+                    if (category === 'all' || section.dataset.category === category) {
+                        section.style.display = 'block';
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+
+                // Announce to screen readers
+                const announcement = document.createElement('div');
+                announcement.setAttribute('role', 'status');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.className = 'sr-only';
+                announcement.textContent = `Showing ${category === 'all' ? 'all items' : category + ' items'}`;
+                document.body.appendChild(announcement);
+                setTimeout(() => announcement.remove(), 1000);
+            });
+        });
+
+        // Smooth scroll for skip link
+        document.querySelector('.skip-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('main-content').focus();
+            document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
