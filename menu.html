@@ -418,12 +418,70 @@
             }
         }
 
+        /* Call Now Button */
+        .call-now-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 16px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 6px 24px rgba(201, 74, 58, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        .call-now-btn:hover,
+        .call-now-btn:focus {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 32px rgba(201, 74, 58, 0.5);
+        }
+
+        .call-now-btn i {
+            font-size: 20px;
+            animation: ring 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 24px rgba(201, 74, 58, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 32px rgba(201, 74, 58, 0.6);
+            }
+        }
+
+        @keyframes ring {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            10%, 30% {
+                transform: rotate(-15deg);
+            }
+            20%, 40% {
+                transform: rotate(15deg);
+            }
+        }
+
         /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
+            }
+            
+            .call-now-btn,
+            .call-now-btn i {
+                animation: none !important;
             }
         }
     </style>
@@ -701,9 +759,15 @@
             </div>
             <p>&copy; 2025 Lings Cafe - All Rights Reserved</p>
         </footer>
+					<!-- Floating Call Now Button -->
+    <a href="tel:8654265192" class="call-now-btn" aria-label="Call Lings Cafe now">
+        <i class="fas fa-phone"></i>
+        <span>Questions? Call Now!</span>
+    </a>
     </div>
 
     <script>
+					 
         // Filter functionality
         const filterButtons = document.querySelectorAll('.tab-btn');
         const menuSections = document.querySelectorAll('.menu-section');
